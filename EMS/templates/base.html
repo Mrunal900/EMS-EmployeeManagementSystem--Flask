@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}EMS(Employee Management System){% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+</head>
+  <body>
+    <nav class="navbar navbar-expand-lg ">
+
+        {% if current_user.is_authenticated and current_user.is_admin %}
+        <div class="collapse navbar-collapse">
+                <div class="navbar-nav">
+                    <a class="nav-link active text-white" aria-current="page" href="{{url_for('home.adminhome')}}">Home</a>
+                </div>
+        </div>
+        <a href="/auth.logout" class="btn btn-primary mx-2">Logout</a>
+        {% elif not current_user.is_admin and current_user.is_authenticated %}
+        <div class="collapse navbar-collapse">
+                <div class="navbar-nav">
+                    <a class="nav-link active text-white" aria-current="page" href="{{url_for('home.home')}}">Home</a>
+                </div>
+        </div>
+        <a href="/logout" class="btn btn-primary mx-2">Logout</a>
+        {% else %}
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active text-white" aria-current="page" href="/">Home</a>
+                </div>
+        </div>
+        {% endif %}
+      </nav>
+      <div class="box">
+          {% if current_user.is_authenticated %}
+             <div class="pics">
+                <img class="person_img" src="{{url_for('static', filename='person.png')}}" alt="">
+             <div class="emsinfo">
+                <h2 class="p1">EMS(Employee Management System)</h2>
+                <h4>Best way to manage your employees</h4>
+             </div>
+             </div>
+          {% else %}
+             <div class="pics">
+                <img class="emp_img" src="{{url_for('static', filename='emps.png')}}" alt="">
+             <div class="emsinfo">
+                <h2 class="p1">EMS(Employee Management System)</h2>
+                <h4>Best way to manage your employees</h4>
+             </div>
+             </div>
+          {% endif %}
+      <div class="one">
+          {% block body %}
+          {% endblock %}
+      </div>
+      </div>
+  </body>
+</html>

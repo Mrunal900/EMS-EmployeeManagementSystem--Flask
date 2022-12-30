@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block title %} EMS {% endblock %}
+{% block body %}
+<div class="emsdiv mt-5">
+  <div class="mt-3 mb-5">
+    <h2 class="p2">Welcome to EMS</h2>
+  </div>
+    <div class="mb-5">
+      <a class="button-34" href="{{url_for('auth.register')}}">New user? let's get started</a>
+  </div>
+  <div class="mb-5">
+      <a class="button-34" href="{{url_for('auth.login')}}">Login</a>
+  </div>
+    <div class="mb-5">
+        <p>EMS allows you to manage your employees in a easy way,
+            You have complete control over the details of the registered employees.
+            Manage the roles, salary  and departments of your employees without hassle in simple clicks.</p>
+    </div>
+
+</div>
+{% endblock %}

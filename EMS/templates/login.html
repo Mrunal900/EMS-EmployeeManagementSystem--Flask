@@ -1,0 +1,52 @@
+{% extends "base.html" %} {% block title %} Login {% endblock %}
+{% block body %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+    {% for category, message in messages %}
+        <p class="alert alert-{{ category }}" id="alertmsg">
+            {{ message }}
+        </p>
+    {% endfor %}
+{% endif %}
+{% endwith %}
+<div class="container ">
+    <h2 class="text-center">Login</h2>
+    <hr>
+    <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <div class="form-group mb-3">
+                    {{ form.email.label(class="form-control-label") }}
+                    {% if form.email.errors %}
+                        {{ form.email(class="form-control form-control-sm is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.email(class="form-control form-control-sm") }}
+                    {% endif %}
+                </div>
+                <div class="form-group mb-3">
+                    {{ form.password.label(class="form-control-label") }}
+                    {% if form.password.errors %}
+                        {{ form.password(class="form-control form-control-sm is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.password(class="form-control form-control-sm") }}
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div class="form-group mb-3">
+                {{ form.submit(class="button-34") }}
+            </div>
+        </form>
+        <hr>
+        <p>New user? <a href="{{url_for('auth.register')}}">Signup</a></p>
+</div>
+{% endblock %}

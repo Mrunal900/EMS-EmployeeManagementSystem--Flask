@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% block title %} Profile {% endblock %}
+{% block body %}
+<div class="emsdiv mt-5">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+    {% for category, message in messages %}
+        <p class="alert alert-{{ category }}" id="alertmsg">
+            {{ message }}
+        </p>
+    {% endfor %}
+{% endif %}
+{% endwith %}
+  <div class="mt-3 mb-5">
+    <h2 class="p2"><u>Personal information</u></h2>
+  </div>
+  <div class="mb-3">
+    <h3>Name : {{ current_user.name }}</h3>
+  </div>
+  <div class="mb-3">
+    <h3>Email : {{ current_user.email }}</h3>
+  </div>
+  <div class="mb-3">
+    <h3>Phone no : {{ current_user.phone }}</h3>
+  </div>
+  <div class="mb-3">
+    <h3>Department : {{ current_user.department }}</h3>
+  </div>
+  <div class="mb-3">
+    <h3>Role : {{ current_user.role }}</h3>
+  </div>
+  <div class="mb-3">
+    <h3>Salary : {{ current_user.salary }}</h3>
+  </div>
+</div>
+{% endblock %}

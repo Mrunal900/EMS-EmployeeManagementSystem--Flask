@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %} Update Employee {% endblock %}
+{% block body %}
+<div class="contain">
+ <form action="" method="post">
+        <div class="mb-3">
+          <label for="fname" class="form-label">Full Name</label>
+          <input type="text" class="form-control form-control-sm"  name="name" value="{{Emp.name}}" id="fname">
+        </div>
+        <div class="mb-3">
+          <label for="city" class="form-label">Phone</label>
+          <input type="text" class="form-control form-control-sm" name="phone" value="{{Emp.phone}}" id="city">
+        </div>
+        <div class="mb-3">
+          <label for="dept" class="form-label">Department</label>
+          <input type="text" class="form-control form-control-sm" name="department" value="{{Emp.department}}" id="dept">
+        </div>
+        <div class="mb-3">
+          <label for="role" class="form-label">Role</label>
+          <input type="text" class="form-control form-control-sm" name="role" value="{{Emp.role}}" id="role">
+        </div>
+        <div class="mb-3">
+          <label for="salary" class="form-label">Salary</label>
+          <input type="text" class="form-control form-control-sm" name="salary" value="{{Emp.salary}}" id="salary">
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+ </form>
+</div>
+{% endblock %}
